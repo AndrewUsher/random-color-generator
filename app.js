@@ -1,17 +1,17 @@
-function getColor () {
-  return '#' + Math.random().toString(16).slice(3,9);
+const getColor = () => {
+  const hexCode = Math.random()
+    .toString(16)
+    .slice(3, 9)
+  return '#' + hexCode
+}
+const setColor = () => {
+  const color = getColor()
+  document.body.style.background = color
+  let colorValue = document.getElementById('color')
+  colorValue.innerHTML = color
 }
 
-function setColor() {
-  var color = getColor();
-  document.body.style.background = color;
-  var colorValue = document.getElementById('color');
-  colorValue.innerHTML = color;
+document.body.onkeyup = event => {
+  event.keyCode == 32 && setColor()
 }
-
-document.body.onkeyup = function(e) {
-  if(e.keyCode == 32){
-    setColor();
-  }
-}
-document.ready = setColor();
+document.ready = setColor()
